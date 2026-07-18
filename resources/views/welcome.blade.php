@@ -54,17 +54,14 @@
             <main class="relative z-10 flex-grow flex items-center justify-center px-6 py-20">
                 <div class="max-w-4xl w-full text-center space-y-10">
                     
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 font-medium text-sm mx-auto shadow-sm animate-fade-in-up">
-                        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        Powered by AI Sentiment Analysis
-                    </div>
+
 
                     <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
                         Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">Private</span> Space to Grow
                     </h1>
                     
                     <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                        EchoWild is an aesthetic digital journal that helps you record daily reflections, automatically analyze emotions using AI, and visualize your inner journey.
+                        EchoWild is an aesthetic digital journal that helps you record daily reflections and visualize your inner journey.
                     </p>
 
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">

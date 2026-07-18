@@ -14,7 +14,6 @@ Route::get('/dashboard', [JournalController::class, 'dashboard'])
     ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::post('/journals/analyze', [JournalController::class, 'analyze'])->name('journals.analyze');
     Route::resource('journals', JournalController::class);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
