@@ -1,54 +1,54 @@
-# Product Requirements Document (PRD)
-**Project Name**: EchoWild
-**Document Version**: 1.0
-**Date**: July 2026
+# Product Requirements Document (PRD) - EchoWild
 
-## 1. Product Vision & Objective
-EchoWild is an aesthetic and highly private digital journaling web application. It aims to provide users with a beautifully designed, distraction-free environment to record their daily reflections, track their moods, and visualize their inner journey over time. The product prioritizes tranquility, ease of use, and visual appeal over complex feature sets.
+## 1. Project Overview
+* **Nama aplikasi:** EchoWild
+* **Latar belakang masalah:** Kebutuhan pengguna akan ruang digital yang estetis, privat, dan menenangkan (distraction-free) untuk mencatat refleksi harian, melacak suasana hati, dan memvisualisasikan perjalanan emosional mereka tanpa gangguan.
+* **Target pengguna:** Individu yang ingin mencatat jurnal harian, melakukan refleksi diri, dan melacak mood mereka secara rutin.
 
-## 2. Target Audience
-- Individuals who maintain daily journals for self-reflection.
-- Users seeking a private, secure, and visually pleasing alternative to physical notebooks.
-- People who wish to track their mood patterns manually over time to better understand their mental well-being.
+## 2. User Personas & User Flow
+* **Daftar aktor:**
+  * **User:** Pengguna reguler yang dapat mendaftar, login, membuat jurnal, melacak mood, dan mengelola entri jurnal mereka sendiri secara privat.
 
-## 3. Core Features & Requirements
+* **Langkah alur penggunaan aplikasi:**
+  1. Pengguna membuka aplikasi dan melakukan registrasi atau login (menggunakan sistem autentikasi Laravel Breeze).
+  2. Pengguna diarahkan ke dashboard utama.
+  3. Pengguna dapat membuat entri jurnal baru dengan menulis konten, memilih mood (skala 1-5 / emoji), dan menambahkan judul opsional.
+  4. Pengguna dapat melihat daftar entri jurnal yang telah ditulis sebelumnya.
+  5. Pengguna dapat mengubah (edit) atau menghapus (delete) entri jurnal miliknya.
+  6. Pengguna dapat logout dari sistem.
 
-### 3.1. User Authentication & Security
-- **Requirement**: Users must be able to securely register, log in, and manage their sessions.
-- **Details**: 
-  - Standard email and password authentication.
-  - Password reset capabilities.
-  - Complete isolation of user data (users can only access their own journals).
+## 3. Functional Requirements
+| ID Fitur | Nama Fitur | Deskripsi Perilaku | Status Wajib/Opsional |
+| :--- | :--- | :--- | :--- |
+| F-01 | Autentikasi Pengguna | Pengguna dapat mendaftar, login, dan logout dengan aman (Breeze). | Wajib |
+| F-02 | Manajemen Jurnal | Pengguna dapat membuat, membaca, mengubah, dan menghapus (CRUD) entri jurnal mereka. | Wajib |
+| F-03 | Pelacakan Mood (Mood Tracking) | Pengguna dapat melacak suasana hatinya (skala 1-5) saat membuat/mengubah jurnal. | Wajib |
+| F-04 | Judul Opsional | Pengguna dapat memberikan judul pada entri jurnalnya, namun tidak diwajibkan. | Opsional |
 
-### 3.2. Dashboard & Analytics
-- **Requirement**: A landing page post-login that gives users an overview of their journaling habit.
-- **Details**:
-  - Display the most recent journal entries (e.g., top 5).
-  - Visual representation of mood patterns over recent entries (e.g., a simple chart or list).
+## 4. Non-Functional Requirements
+* **Teknologi yang digunakan (stack):**
+  * Backend: Laravel 11.x (PHP 8.x)
+  * Frontend: Blade Templates, Tailwind CSS, Alpine.js
+  * Database: MySQL / SQLite
+* **Ketentuan keamanan:**
+  * **Enkripsi:** Password pengguna dienkripsi menggunakan standar hashing bcrypt dari Laravel.
+  * **Validasi input:** Form request divalidasi dengan ketat baik di sisi klien maupun server sebelum disimpan ke database.
+  * **Otorisasi Data:** Entri jurnal terikat dengan `user_id` sehingga setiap pengguna hanya dapat mengakses dan memodifikasi datanya sendiri.
 
-### 3.3. Journal Management (CRUD)
-- **Requirement**: Users must have full control over their journal entries.
-- **Details**:
-  - **Create**: Write a new journal with an optional title, mandatory content body, and a manual mood score (1 to 5, represented by emojis 😩 to 😁).
-  - **Read**: View the full content of a past journal, including the date written and the selected mood.
-  - **Update**: Edit the title, content, or mood score of an existing journal.
-  - **Delete**: Permanently remove a journal entry (with a confirmation prompt).
+## 5. Database Schema
+### Tabel `users`
+* `id` (Primary Key, BigInt)
+* `name` (String)
+* `email` (String, Unique)
+* `email_verified_at` (Timestamp, Nullable)
+* `password` (String)
+* `remember_token` (String, Nullable)
+* `timestamps` (created_at, updated_at)
 
-### 3.4. UI/UX & Design Guidelines
-- **Requirement**: The application must evoke a sense of calm, luxury, and modernity.
-- **Details**:
-  - **Theme**: "Glassmorphism" — utilizing semi-transparent, blurred backgrounds over vibrant abstract shapes.
-  - **Color Palette**: Emerald, Sage Green, Teal, and neutral gray/white/dark tones.
-  - **Typography**: The *Outfit* font family for a modern, rounded, and highly readable look.
-  - **Responsiveness**: The UI must function flawlessly on desktop, tablet, and mobile browsers.
-
-## 4. Technical Specifications
-
-- **Backend Framework**: Laravel 11.x (PHP 8.x)
-- **Frontend Technologies**: Laravel Blade, Tailwind CSS, Alpine.js
-- **Database**: MySQL / SQLite
-- **Authentication**: Laravel Breeze
-- **Asset Compilation**: Vite
-
----
-*End of Document*
+### Tabel `journals`
+* `id` (Primary Key, BigInt)
+* `user_id` (Foreign Key ke `users.id`, Cascade on Delete)
+* `title` (String, Nullable)
+* `content` (Text)
+* `mood_score` (Integer, Default 3)
+* `timestamps` (created_at, updated_at)
