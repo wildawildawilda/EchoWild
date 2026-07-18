@@ -5,9 +5,39 @@ namespace App\Http\Controllers;
 use App\Models\Journal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class JournalController extends Controller
 {
+    public function analyze(Request $request)
+    {
+        $request->validate(['content' => 'required|string']);
+        $text = $request->input('content');
+        $apiKey = env('GEMINI_API_KEY');
+
+        if (empty($apiKey)) {
+            return response()->json(['error' => 'API Key belum dikonfigurasi.'], 500);
+        }
+
+        $prompt = "Analisis teks berikut yang merupakan entri jurnal keseharian. Tentukan skor suasana hati (mood score) dari 1 hingga 5, di mana 1 adalah sangat buruk (awful/sedih/marah), 2 adalah buruk, 3 adalah biasa saja (neutral), 4 adalah baik, dan 5 adalah sangat baik (awesome/sangat senang). Hanya balas dengan satu angka dari 1 sampai 5 tanpa teks tambahan apapun.\n\nTeks Jurnal: \"$text\"";
+
+        $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={$apiKey}", [
+            'contents' => [
+                ['parts' => [['text' => $prompt]]]
+            ]
+        ]);
+
+        if ($response->successful()) {
+            $data = $response->json();
+            $result = $data['candidates'][0]['content']['parts'][0]['text'] ?? '3';
+            $score = (int) trim($result);
+            // Ensure score is between 1 and 5
+            $score = max(1, min(5, $score));
+            return response()->json(['score' => $score]);
+        }
+
+        return response()->json(['error' => 'Gagal terhubung ke API AI.'], 500);
+    }
     public function dashboard()
     {
         $user = Auth::user();
