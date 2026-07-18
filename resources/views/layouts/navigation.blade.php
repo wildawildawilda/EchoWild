@@ -16,7 +16,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <x-nav-link :href="route('journals.index')" :active="request()->routeIs('journals.*')" class="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 font-medium transition-colors">
-                        {{ __('Jurnal') }}
+                        {{ __('Journals') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -38,7 +38,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')" class="hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors rounded-t-md">
-                            {{ __('Profil') }}
+                            {{ __('Profile') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -47,7 +47,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();" class="text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-b-md transition-colors">
-                                {{ __('Keluar') }}
+                                {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -73,7 +73,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('journals.index')" :active="request()->routeIs('journals.*')">
-                {{ __('Jurnal') }}
+                {{ __('Journals') }}
             </x-responsive-nav-link>
         </div>
 
@@ -86,7 +86,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profil') }}
+                    {{ __('Profile') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -95,7 +95,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();" class="text-red-600">
-                        {{ __('Keluar') }}
+                        {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

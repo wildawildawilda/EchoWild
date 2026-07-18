@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>EchoWild - Dokumentasikan Perasaanmu</title>
+        <title>EchoWild - Document Your Feelings</title>
         
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,10 +39,10 @@
                             @auth
                                 <a href="{{ url('/dashboard') }}" class="font-semibold text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Dashboard</a>
                             @else
-                                <a href="{{ route('login') }}" class="font-semibold text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Masuk</a>
+                                <a href="{{ route('login') }}" class="font-semibold text-gray-700 dark:text-gray-200 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">Log in</a>
 
                                 @if (Route::has('register'))
-                                    <a href="{{ route('register') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl hover:shadow-lg hover:shadow-emerald-500/30 transform hover:-translate-y-0.5 transition-all duration-300">Daftar</a>
+                                    <a href="{{ route('register') }}" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-bold text-white bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl hover:shadow-lg hover:shadow-emerald-500/30 transform hover:-translate-y-0.5 transition-all duration-300">Sign up</a>
                                 @endif
                             @endauth
                         </nav>
@@ -56,29 +56,29 @@
                     
                     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 font-medium text-sm mx-auto shadow-sm animate-fade-in-up">
                         <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                        Dilengkapi Analisis Sentimen AI
+                        Powered by AI Sentiment Analysis
                     </div>
 
                     <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight">
-                        Ruang <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">Pribadi</span> Anda untuk Tumbuh
+                        Your <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-500">Private</span> Space to Grow
                     </h1>
                     
                     <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-                        EchoWild adalah jurnal digital estetik yang membantu Anda mencatat refleksi harian, menganalisis emosi secara otomatis menggunakan AI, dan memvisualisasikan perjalanan batin Anda.
+                        EchoWild is an aesthetic digital journal that helps you record daily reflections, automatically analyze emotions using AI, and visualize your inner journey.
                     </p>
 
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                         @auth
                             <a href="{{ url('/dashboard') }}" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-gray-900 dark:bg-white dark:text-gray-900 rounded-2xl hover:shadow-2xl hover:shadow-gray-900/20 transform hover:-translate-y-1 transition-all duration-300">
-                                Lanjutkan ke Dashboard
+                                Go to Dashboard
                                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                             </a>
                         @else
                             <a href="{{ route('register') }}" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-gray-900 dark:bg-white dark:text-gray-900 rounded-2xl hover:shadow-2xl hover:shadow-gray-900/20 transform hover:-translate-y-1 transition-all duration-300">
-                                Mulai Menulis Gratis
+                                Start Writing for Free
                             </a>
                             <a href="{{ route('login') }}" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-base font-bold text-gray-700 dark:text-gray-200 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-2xl hover:bg-white dark:hover:bg-gray-800 hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                                Masuk ke Akun
+                                Log in to your Account
                             </a>
                         @endauth
                     </div>
@@ -88,7 +88,7 @@
 
             <!-- Footer -->
             <footer class="relative z-10 text-center py-8 text-gray-500 dark:text-gray-400 text-sm">
-                <p>&copy; {{ date('Y') }} EchoWild. Dibuat dengan gaya (dan banyak keluhan).</p>
+                <p>&copy; {{ date('Y') }} EchoWild. Made with style (and a lot of complaints).</p>
             </footer>
 
         </div>

@@ -16,10 +16,10 @@ class JournalController extends Controller
         $apiKey = env('GEMINI_API_KEY');
 
         if (empty($apiKey)) {
-            return response()->json(['error' => 'API Key belum dikonfigurasi.'], 500);
+            return response()->json(['error' => 'API Key is not configured.'], 500);
         }
 
-        $prompt = "Analisis teks berikut yang merupakan entri jurnal keseharian. Tentukan skor suasana hati (mood score) dari 1 hingga 5, di mana 1 adalah sangat buruk (awful/sedih/marah), 2 adalah buruk, 3 adalah biasa saja (neutral), 4 adalah baik, dan 5 adalah sangat baik (awesome/sangat senang). Hanya balas dengan satu angka dari 1 sampai 5 tanpa teks tambahan apapun.\n\nTeks Jurnal: \"$text\"";
+        $prompt = "Analyze the following text which is a daily journal entry. Determine a mood score from 1 to 5, where 1 is awful/sad/angry, 2 is bad, 3 is neutral, 4 is good, and 5 is awesome/very happy. Reply with only one single number from 1 to 5 without any additional text.\n\nJournal Text: \"$text\"";
 
         $response = Http::post("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key={$apiKey}", [
             'contents' => [
@@ -36,14 +36,14 @@ class JournalController extends Controller
             return response()->json(['score' => $score]);
         }
 
-        return response()->json(['error' => 'Gagal terhubung ke API AI.'], 500);
+        return response()->json(['error' => 'Failed to connect to AI API.'], 500);
     }
     public function dashboard()
     {
         $user = Auth::user();
         $recentJournals = $user->journals()->orderBy('created_at', 'desc')->take(5)->get();
         
-        // Data untuk grafik sentimen (7 entri terakhir)
+        // Data for sentiment chart (last 14 entries)
         $chartData = $user->journals()
             ->select('created_at', 'mood_score')
             ->orderBy('created_at', 'desc')
@@ -76,7 +76,7 @@ class JournalController extends Controller
 
         $request->user()->journals()->create($validated);
 
-        return redirect()->route('journals.index')->with('success', 'Jurnal berhasil ditambahkan.');
+        return redirect()->route('journals.index')->with('success', 'Journal added successfully.');
     }
 
     public function show(Journal $journal)
@@ -103,14 +103,14 @@ class JournalController extends Controller
 
         $journal->update($validated);
 
-        return redirect()->route('journals.index')->with('success', 'Jurnal berhasil diperbarui.');
+        return redirect()->route('journals.index')->with('success', 'Journal updated successfully.');
     }
 
     public function destroy(Journal $journal)
     {
         $this->authorizeAccess($journal);
         $journal->delete();
-        return redirect()->route('journals.index')->with('success', 'Jurnal berhasil dihapus.');
+        return redirect()->route('journals.index')->with('success', 'Journal deleted successfully.');
     }
 
     private function authorizeAccess(Journal $journal)

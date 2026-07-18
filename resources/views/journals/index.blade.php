@@ -3,13 +3,13 @@
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
                 <h2 class="font-semibold text-3xl text-gray-800 dark:text-gray-100 leading-tight tracking-tight">
-                    {{ __('Semua Jurnal') }}
+                    {{ __('All Journals') }}
                 </h2>
-                <p class="text-sm text-emerald-600 dark:text-emerald-400 mt-1 font-medium">Jejak langkah perjalanan emosional Anda.</p>
+                <p class="text-sm text-emerald-600 dark:text-emerald-400 mt-1 font-medium">The footsteps of your emotional journey.</p>
             </div>
             <a href="{{ route('journals.create') }}" class="inline-flex items-center justify-center bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 transform hover:-translate-y-0.5">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                Tulis Jurnal
+                New Journal
             </a>
         </div>
     </x-slot>
@@ -43,7 +43,7 @@
                             </div>
                             
                             <h3 class="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-1">
-                                {{ $journal->title ?: 'Tanpa Judul' }}
+                                {{ $journal->title ?: 'Untitled' }}
                             </h3>
                             
                             <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed line-clamp-3">
@@ -51,7 +51,7 @@
                             </p>
                         </div>
                         <div class="px-8 py-5 border-t border-gray-100/50 dark:border-gray-800/50 bg-gray-50/50 dark:bg-gray-800/30 flex items-center justify-between group-hover:bg-emerald-50/50 dark:group-hover:bg-emerald-900/20 transition-colors">
-                            <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Baca selengkapnya</span>
+                            <span class="text-xs font-medium text-gray-500 dark:text-gray-400">Read more</span>
                             <svg class="w-4 h-4 text-emerald-500 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </div>
                     </a>
@@ -61,10 +61,10 @@
                             <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-500 mb-6">
                                 <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">Belum ada jurnal</h3>
-                            <p class="text-gray-500 dark:text-gray-400 mb-6 max-w-sm">Anda belum menulis apa pun. Mari mulai mendokumentasikan keseharian dan perasaan Anda.</p>
+                            <h3 class="text-xl font-bold text-gray-800 dark:text-gray-200 mb-2">No journals yet</h3>
+                            <p class="text-gray-500 dark:text-gray-400 mb-6 max-w-sm">You haven't written anything yet. Let's start documenting your days and feelings.</p>
                             <a href="{{ route('journals.create') }}" class="inline-flex items-center justify-center bg-gray-900 dark:bg-white text-white dark:text-gray-900 px-6 py-3 rounded-xl text-sm font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all">
-                                Tulis Jurnal Pertama
+                                Write Your First Journal
                             </a>
                         </div>
                     </div>

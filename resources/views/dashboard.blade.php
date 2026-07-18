@@ -3,13 +3,13 @@
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
                 <h2 class="font-semibold text-3xl text-gray-800 dark:text-gray-100 leading-tight tracking-tight">
-                    {{ __('Refleksi Anda') }}
+                    {{ __('Your Reflections') }}
                 </h2>
-                <p class="text-sm text-emerald-600 dark:text-emerald-400 mt-1 font-medium">Lacak perjalanan emosional Anda dari waktu ke waktu</p>
+                <p class="text-sm text-emerald-600 dark:text-emerald-400 mt-1 font-medium">Track your emotional journey over time</p>
             </div>
             <a href="{{ route('journals.create') }}" class="inline-flex items-center justify-center bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 transform hover:-translate-y-0.5">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                Tulis Jurnal
+                New Journal
             </a>
         </div>
     </x-slot>
@@ -26,7 +26,7 @@
                 <div class="p-8">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6 flex items-center">
                         <svg class="w-6 h-6 mr-2 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
-                        Pola Suasana Hati
+                        Mood Patterns
                     </h3>
                     <div class="relative h-72 w-full">
                         <canvas id="sentimentChart"></canvas>
@@ -40,9 +40,9 @@
                     <div class="flex justify-between items-center mb-8 pb-4 border-b border-gray-200 dark:border-gray-800">
                         <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 flex items-center">
                             <svg class="w-6 h-6 mr-2 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                            Jurnal Terbaru
+                            Recent Journals
                         </h3>
-                        <a href="{{ route('journals.index') }}" class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 transition-colors">Lihat Semua &rarr;</a>
+                        <a href="{{ route('journals.index') }}" class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 transition-colors">View All &rarr;</a>
                     </div>
                     
                     <div class="space-y-4">
@@ -50,7 +50,7 @@
                             <a href="{{ route('journals.show', $journal) }}" class="block p-5 rounded-2xl border border-gray-100 dark:border-gray-800 bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 group">
                                 <div class="flex justify-between items-start">
                                     <div class="flex-1 pr-4">
-                                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{{ $journal->title ?: 'Tanpa Judul' }}</h4>
+                                        <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">{{ $journal->title ?: 'Untitled' }}</h4>
                                         <p class="text-sm text-gray-500 dark:text-gray-400 mt-2 line-clamp-2 leading-relaxed">{{ Str::limit($journal->content, 120) }}</p>
                                     </div>
                                     <div class="flex flex-col items-end justify-between h-full space-y-4">
@@ -69,8 +69,8 @@
                                 <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-500 mb-4">
                                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
                                 </div>
-                                <p class="text-lg font-medium text-gray-600 dark:text-gray-400">Belum ada jurnal.</p>
-                                <p class="text-sm text-gray-500 mt-1">Mulai catat perjalanan emosional Anda hari ini.</p>
+                                <p class="text-lg font-medium text-gray-600 dark:text-gray-400">No journals yet.</p>
+                                <p class="text-sm text-gray-500 mt-1">Start recording your emotional journey today.</p>
                             </div>
                         @endforelse
                     </div>
